@@ -6,11 +6,15 @@ def app():
     st.title("Time Series Forecasting")
 
     st.sidebar.header("Upload and Configure Data")
+    st.sidebar.markdown("[Download Sample Datasets](https://github.com/dibyendutapadar/time-series-forecasting/tree/cd2f848fce49ece37a0dc3235449532075d9c9bf/sample%20data%20sets)")
     uploaded_file = st.sidebar.file_uploader("Upload your CSV file", type=["csv"])
     if uploaded_file:
         df = load_data(uploaded_file)
 
         if df is not None:
+            st.subheader("Data Preview")
+            st.write(df.head(2))
+
             date_col = st.sidebar.selectbox("Select Date Column", df.columns)
             target_col = st.sidebar.selectbox("Select Target Column", df.columns)
             date_format = st.sidebar.text_input("Date Format (e.g., %Y-%m-%d)", value="%Y-%m-%d")
