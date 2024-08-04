@@ -13,7 +13,7 @@ def app():
 
         if df is not None:
             st.subheader("Data Preview")
-            st.write(df.head(2))
+            st.write(df.head(5))
 
             date_col = st.sidebar.selectbox("Select Date Column", df.columns)
             target_col = st.sidebar.selectbox("Select Target Column", df.columns)
@@ -163,10 +163,10 @@ def app():
         col8, col9, col10 = st.columns(3)
 
         with col8:
-            trend = st.selectbox("Select Trend", [None, 'add', 'mul'])
+            trend = st.selectbox("Select Trend", [None, 'add', 'mul'],index=2)
         
         with col9:
-            seasonal = st.selectbox("Select Seasonal", [None, 'add', 'mul'])
+            seasonal = st.selectbox("Select Seasonal", [None, 'add', 'mul'],index=2)
 
         with col10:    
             seasonal_periods = st.number_input("Seasonal Periods", min_value=1, max_value=365, value=12)
